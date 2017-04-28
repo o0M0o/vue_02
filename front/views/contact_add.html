@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>添加联系人</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/contact.css">
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+		  <div class="navbar-header">
+			<a class="navbar-brand" href="/">返回首页</a>
+		  </div>
+		  <div class="navbar-header">
+			<a class="navbar-brand" href="/contactmd">查看联系人</a>
+		  </div>
+		</div>
+	</nav>
+	
+	<div id="app">
+		<div class="container">
+			<div class="form-group">
+				<label>First Name</label>
+				<input id="fname" type="text" value="{{ fname }}"/>
+			</div>
+
+			<div class="form-group">
+				<label>Second Name</label>
+				<input id="sname" type="text" value="{{ sname }}"/>
+			</div>
+
+			<div class="form-group">
+				<label>Email</label>
+				<input id="email" type="text" value="{{ email }}"/>
+			</div>
+
+			<div class="form-group">
+				<label>Description</label>
+				<input id="desc" type="text" value="{{ desc }}"/>
+			</div>
+
+			<div class="form-group">
+				<label></label>
+				<button onclick="createContact()">Save</button>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script src="js/vue-resource.js"></script> 
+	<script src="js/contact_add.js"></script>	
+</body>
+</html>

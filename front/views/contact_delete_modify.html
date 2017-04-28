@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>管理联系人</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/contact.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">回到首页</a>
+          </div>
+        </div>
+    </nav>
+
+    
+    <div id="app">
+        <div class="container"> 
+            <div class="col-xs-9">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <td>first_name</td>
+                            <td>last_name</td>
+                            <td>email</td>
+                            <td>description</td>
+                            <td>delete</td>
+                            <td>modify</td>
+                        </thead>
+                        <tbody>
+                            <tr v-for="ct in contacts">
+                                <td>{{ ct.first_name }}</td>
+                                <td>{{ ct.last_name }}</td>
+                                <td>{{ ct.email }}</td>
+                                <td>{{ ct.description }}</td>
+                                <td>
+                                    <button class="btn-danger" onclick="deleteEntry({{ ct.id }})">delete</button>
+                                </td>
+                                <td>
+                                    <button class="btn-danger" onclick="modifyEntry({{ ct.id }})">modify</button>
+                                </td>
+                            </tr>                           
+                        </tbody>
+                    </table>
+                </div>
+            </div>    
+        </div>
+    </div>
+    <div class="container">
+        <div class="form-group">
+            <button onclick="createContact()">Create</button>
+        </div>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script src="js/vue-resource.js"></script> 
+    <script src="js/contact_delete_modify.js"></script> 
+    
+    <script>
+        function createContact()    {
+            window.location.href='./addcontact'
+        }
+    </script>
+
+</body>
+</html>
