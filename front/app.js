@@ -31,7 +31,7 @@ app.get('/addcontact', function(req, res) {
 
 // serve up the add contact
 app.get('/contactmd', function(req, res) {
-    res.sendFile(path.join(__dirname, 'views/contact_delete_modify.html'));
+    res.sendFile(path.join(__dirname, 'views/contact_manage.html'));
 });
 
 
