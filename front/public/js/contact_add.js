@@ -176,11 +176,11 @@ var demo = new Vue({
                 var vm = this;
 
                 var http_request = new XMLHttpRequest();
-                http_request.onreadystatechange = function(){
                 http_request.open("GET", 'http://localhost:8089/contacts/' + id, true);
+
+                http_request.onreadystatechange = function(){
                    if (http_request.readyState == 4  || http_request.readyState == 200){
                         console.log(http_request.responseText)
-                        // Javascript function JSON.parse to parse JSON data
                         var jsonObj = JSON.parse(http_request.responseText);
                         if(jsonObj != null) {
                             vm.fname = jsonObj.first_name;

@@ -17,6 +17,7 @@ var config = require('./config.js');
  * 设置端口和初始路径
  */
 app.set('port', (process.env.PORT || 5200));
+//app.use(express.static(path.join(__dirname, 'lib/')));
 app.use(express.static(path.join(__dirname, 'public/')));
 
 
