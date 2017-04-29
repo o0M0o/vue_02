@@ -15,22 +15,22 @@ function createContact() {
    var email = document.getElementById("email").value;
    var desc = document.getElementById("desc").value;
 
-   if(!check_first_name(fn))    {
+   if(!_check_first_name(fn))    {
         alert("first name must have value");
         return;
    }
 
-   if(!check_second_name(sn))   {
+   if(!_check_second_name(sn))   {
         alert("second name must have value");
         return;
    }
 
-   if(!check_email(email))  {
+   if(!_check_email(email))  {
         alert("email must have value");
         return;
    }
 
-   if(!check_desc(desc))    {
+   if(!_check_desc(desc))    {
         //alert("description must have value");
         return;
    }
@@ -40,11 +40,11 @@ function createContact() {
     load.last_name = sn;
     load.email = email;
     load.description = desc;
-    var id = getParam("id");
+    var id = _getParam("id");
     if("" != id)    {
-        put_data(id, JSON.stringify(load))
+        _put_data(id, JSON.stringify(load))
     } else  {
-        post_data(JSON.stringify(load));
+        _post_data(JSON.stringify(load));
     }
 }
 
@@ -59,11 +59,12 @@ function _post_data(sz) {
 
     http_request.onreadystatechange = function() {
         console.log(this.responseText);
-        if(http.readyState == 4 && http.status == 200) {
+        if(http_request.readyState == 4 && http_request.status == 200) {
             alert("添加数据成功!");
-        } else  {
+        } 
+        /*else  {
             alert("添加数据失败!");
-        }
+        } */
     }
 
     http_request.send(sz);
@@ -82,9 +83,10 @@ function _put_data(id, sz)  {
         console.log(this.responseText);
         if(http.readyState == 4 && http.status == 200) {
             alert("修改数据成功!");
-        } else  {
+        } 
+        /* else  {
             alert("修改数据失败!");
-        }
+        } */
     }
 
     http_request.send(sz);
@@ -95,28 +97,37 @@ function _put_data(id, sz)  {
 *  check first_name validity
 */
 function _check_first_name(fn)  {
-    return fn !== null || fn !== undefined || fn !== '';
+    return _string_is_empty(fn);
 }
 
 /**
 *  check second_name validity
 */
 function _check_second_name(sn) {
-    return sn !== null || sn !== undefined || sn !== '';
+    return _string_is_empty(sn);
 }
 
 /**
 *  check email validity
 */
 function _check_email(em)   {
-    return em !== null || em !== undefined || em !== '';
+    return _string_is_empty(em);
 }
 
 /**
 *  check description validity
+*  description can be empty
 */
 function _check_desc(desc)  {
     return true;
+}
+
+/**
+ *  check string is empty
+ *  @return  { boolean }   if string is empty return true
+ */
+function _string_is_empty(sz)  {
+    return sz != null && sz != undefined && sz != '';
 }
 
 
@@ -160,7 +171,7 @@ var demo = new Vue({
     },
     methods: {
         getCustomers: function() {
-            var id = getParam("id");
+            var id = _getParam("id");
             if("" != id)    {
                 var vm = this;
 

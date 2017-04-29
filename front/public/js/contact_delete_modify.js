@@ -2,13 +2,13 @@
  *  v1.0.0
  *  ookooer
  * 
- *  Ö´ĞĞcontactÊı¾İµÄÉ¾³ı/ĞŞ¸Ä¹¤×÷
+ *  æ‰§è¡Œcontactæ•°æ®çš„åˆ é™¤/ä¿®æ”¹å·¥ä½œ
  */
 
 
 /**
-* VueÊµÀı
-* ´Óºó¶Ë¼ÓÔØÊı¾İ
+* Vueå®ä¾‹
+* ä»åç«¯åŠ è½½æ•°æ®
 */
 var demo = new Vue({ 
         el: '#app', 
@@ -32,9 +32,11 @@ var demo = new Vue({
 
                         var jsonObj = JSON.parse(http_request.responseText); 
                         vm.contacts = jsonObj;                  
-                    } else  {
-                        alert("¶ÁÈ¡Êı¾İÊ§°Ü!");
+                    } 
+                    /*else  {
+                        alert("è¯»å–æ•°æ®å¤±è´¥!");
                     }
+                    */
                 } 
 
                 http_request.send(null);
@@ -43,7 +45,7 @@ var demo = new Vue({
     })
 
 /**
-* É¾³ıÊı¾İ£¬È»ºóÖØĞÂ¼ÓÔØ±¾Ò³Ãæ
+* åˆ é™¤æ•°æ®ï¼Œç„¶åé‡æ–°åŠ è½½æœ¬é¡µé¢
 *
 * @param {int} en   id for contact
 */
@@ -60,7 +62,7 @@ function deleteEntry(en)    {
             window.location.href=window.location.href; 
             window.location.reload; 
         } else  {
-            alert("¶ÁÈ¡Êı¾İÊ§°Ü!");
+            alert("è¯»å–æ•°æ®å¤±è´¥!");
         }
     } 
 
@@ -68,7 +70,7 @@ function deleteEntry(en)    {
 }
 
 /**
-* Ìø×ªµ½ÆäËüÒ³ÃæĞŞ¸ÄÊı¾İ
+* è·³è½¬åˆ°å…¶å®ƒé¡µé¢ä¿®æ”¹æ•°æ®
 *
 * @param {int} en   id for contact
 */

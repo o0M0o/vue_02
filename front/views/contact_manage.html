@@ -15,17 +15,28 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="/">回到首页</a>
+            <a class="navbar-brand" href="/">首页</a>
+          </div>
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/addcontact">添加联系人</a>
           </div>
         </div>
     </nav>
 
     
     <div id="app">
+        <!--
+        <div class="container" align="right">
+            <div class="form-group">
+                <button class="btn btn-primary" onclick="createContact()">Create</button>
+            </div>
+        </div>
+        -->
         <div class="container"> 
             <div class="col-xs-9">
-                <div class="table-responsive">
-                    <table class="table">
+                <!-- <div class="table-responsive"> -->
+                <div class="col-md-6">
+                    <table class="table table-striped">
                         <thead>
                             <td>first_name</td>
                             <td>last_name</td>
@@ -41,10 +52,10 @@
                                 <td>{{ ct.email }}</td>
                                 <td>{{ ct.description }}</td>
                                 <td>
-                                    <button class="btn-danger" onclick="deleteEntry({{ ct.id }})">delete</button>
+                                    <button class="btn btn-sm btn-danger" onclick="deleteEntry({{ ct.id }})">delete</button>
                                 </td>
                                 <td>
-                                    <button class="btn-danger" onclick="modifyEntry({{ ct.id }})">modify</button>
+                                    <button class="btn btn-sm btn-danger" onclick="modifyEntry({{ ct.id }})">modify</button>
                                 </td>
                             </tr>                           
                         </tbody>
@@ -53,21 +64,17 @@
             </div>    
         </div>
     </div>
-    <div class="container">
-        <div class="form-group">
-            <button onclick="createContact()">Create</button>
-        </div>
-    </div>
 
     <script src="js/vue.js"></script>
     <script src="js/vue-resource.js"></script> 
     <script src="js/contact_delete_modify.js"></script> 
     
+    <!--
     <script>
         function createContact()    {
             window.location.href='./addcontact'
         }
     </script>
-
+    -->
 </body>
 </html>
