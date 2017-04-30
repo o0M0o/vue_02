@@ -42,9 +42,15 @@ function createContact() {
     load.description = desc;
     var id = GLOBAL_HELPER.getParamFromURL(window.location.search, "id");
     if("" != id)    {
-        _put_data(id, JSON.stringify(load))
+        BACKEND_HELPER.putContactData(  
+            id, JSON.stringify(load),
+            function(hr)    {
+                console.log(hr.responseText);
+                if(hr.readyState == 4 && hr.status == 200) {
+                    alert("修改数据成功!");
+                } 
+            });
     } else  {
-        //_post_data(JSON.stringify(load));
         BACKEND_HELPER.postContactData(  
             JSON.stringify(load),
             function(hr)    {
@@ -55,51 +61,6 @@ function createContact() {
             });
     }
 }
-
-/**
-* 创建contact
-* 给后端发http请求来创建数据
-*/
-function _post_data(sz) {
-    var http_request = new XMLHttpRequest();
-    http_request.open("POST", 'http://localhost:8089/contacts', true);
-    http_request.setRequestHeader("Content-type", "application/json");
-
-    http_request.onreadystatechange = function(hr) {
-        console.log(hr.responseText);
-        if(hr.readyState == 4 && hr.status == 200) {
-            alert("添加数据成功!");
-        } 
-        /*else  {
-            alert("添加数据失败!");
-        } */
-    }
-
-    http_request.send(sz);
-}
-
-/**
-* 修改contact
-* 给后端发http请求来修改数据
-*/
-function _put_data(id, sz)  {
-    var http_request = new XMLHttpRequest();
-    http_request.open("PUT", 'http://localhost:8089/contacts/' + id, true);
-    http_request.setRequestHeader("Content-type", "application/json");
-
-    http_request.onreadystatechange = function() {//Call a function when the state changes.
-        console.log(this.responseText);
-        if(http_request.readyState == 4 && http_request.status == 200) {
-            alert("修改数据成功!");
-        } 
-        /* else  {
-            alert("修改数据失败!");
-        } */
-    }
-
-    http_request.send(sz);
-}
-
 
 /**
 *  check first_name validity
