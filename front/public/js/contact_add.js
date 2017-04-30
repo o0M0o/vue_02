@@ -122,25 +122,22 @@ var demo = new Vue({
             if("" != id)    {
                 var vm = this;
 
-                var http_request = new XMLHttpRequest();
-                http_request.open("GET", 'http://localhost:8089/contacts/' + id, true);
-
-                http_request.onreadystatechange = function(){
-                   if (http_request.readyState == 4  || http_request.readyState == 200){
-                        console.log(http_request.responseText)
-                        var jsonObj = JSON.parse(http_request.responseText);
-                        if(jsonObj != null) {
-                            vm.fname = jsonObj.first_name;
-                            vm.sname = jsonObj.last_name;
-                            vm.email = jsonObj.email;
-                            vm.desc = jsonObj.description;
-                        }   else    {
-                            alert("获取contact数据失败!");
-                        }
-                   }
-                }
-
-                http_request.send(null);
+                BACKEND_HELPER.getContactData(  
+                    id,
+                    function(hr)    {
+                        if(hr.readyState == 4 && hr.status == 200) {
+                            console.log(hr.responseText);
+                            var jsonObj = JSON.parse(hr.responseText);
+                            if(jsonObj != null) {
+                                vm.fname = jsonObj.first_name;
+                                vm.sname = jsonObj.last_name;
+                                vm.email = jsonObj.email;
+                                vm.desc = jsonObj.description;
+                            }   else    {
+                                alert("获取contact数据失败!");
+                            }
+                        } 
+                    });
             }
         }
     }

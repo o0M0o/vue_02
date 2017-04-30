@@ -86,8 +86,26 @@ var BACKEND_HELPER = (function() {
         http_request.send(null);
     }
 
+    /**
+     *  根据id获取contact数据
+     *  从后端获取数据
+     *
+     *  @param {int}    id               contact id
+     *  @param {function} callback       状态回调函数
+     */
+    var getContactData = function(id, callback)  {
+        var http_request = new XMLHttpRequest();            
+        http_request.open("GET", BACKEND_URL + '/' + id, true); 
+        http_request.onreadystatechange = function()    { 
+            callback(http_request);
+        } 
+
+        http_request.send(null);
+    }
+
     return {
         deleteContactData   : deleteContactData, 
+        getContactData      : getContactData, 
         getAllContactData   : getAllContactData, 
         putContactData      : putContactData, 
         postContactData     : postContactData 
